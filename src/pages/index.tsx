@@ -1,7 +1,6 @@
 import { trpc } from '@/utils/trpc'
 import type { NextPage } from 'next'
-
-import SubmitGolfCourse from '../components/SubmitGolfCourse'
+import GolfCourseForm from '../components/GolfCourseForm'
 
 const Home: NextPage = () => {
   const {data, isLoading } = trpc.useQuery(["hello", {text: "John"}])
@@ -9,9 +8,9 @@ const Home: NextPage = () => {
   if (isLoading) return <div>Loading</div>
 
   return (
-    <div className="h-screen w-screen flex">
+    <div className="h-screen w-screen flex flex-col">
       <div>{data?.greeting}</div>
-      <SubmitGolfCourse />
+      <GolfCourseForm />
     </div>
   )
 }
