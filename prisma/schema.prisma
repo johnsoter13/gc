@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_URL")
+}
+
+model GolfCourse {
+  golfCourseId       String  @id @default(cuid())
+  golfCourseName     String
+  golfCourseRating   Decimal @db.Decimal(5, 2)
+  golfCourseSlope    Decimal @db.Decimal(5, 2)
+  golfCourseYards    Int
+  golfCourseParScore Int
+  golfCourseHandicap Decimal @db.Decimal(4, 2)
+}

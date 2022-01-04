@@ -1,16 +1,27 @@
 import * as trpc from '@trpc/server';
+import {prisma} from '@/backend/utils/prisma';
 
 import { z } from 'zod';
 
-export const appRouter = trpc.router().query('hello', {
+export const appRouter = trpc.router().query('add-new-gc', {
   input: z
     .object({
-      text: z.string().nullish(),
+      golfCourseName: z.string(),
+      golfCourseRating: z.number(),
+      golfCourseSlope: z.number(),
+      golfCourseYards: z.number(),
+      golfCourseParScore: z.number(),
+      golfCourseHandicap: z.number()
+    }),
+  async resolve({ input }) {
+    const gc = await prisma.golfCourse.create({
+      data: {
+        ...input
+      }
     })
-    .nullish(),
-  resolve({ input }) {
     return {
-      greeting: `hello ${input?.text ?? 'world'}`,
+      gc: input,
+      success: true,
     };
   },
 });

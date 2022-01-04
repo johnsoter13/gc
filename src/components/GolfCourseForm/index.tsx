@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 interface IFormInput {
   gcName: string;
-  gcRating: string; // decimal
+  gcRating: number; // decimal
   gcSlope: number; // decimal
   gcYards: number;
   gcParScore: number;
