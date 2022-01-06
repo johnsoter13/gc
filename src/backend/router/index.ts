@@ -3,7 +3,7 @@ import {prisma} from '@/backend/utils/prisma';
 
 import { z } from 'zod';
 
-export const appRouter = trpc.router().query('add-new-gc', {
+export const appRouter = trpc.router().mutation('add-new-gc', {
   input: z
     .object({
       golfCourseName: z.string(),
@@ -16,11 +16,11 @@ export const appRouter = trpc.router().query('add-new-gc', {
   async resolve({ input }) {
     const gc = await prisma.golfCourse.create({
       data: {
-        ...input
+        ...input,
       }
     })
     return {
-      gc: input,
+      gc,
       success: true,
     };
   },

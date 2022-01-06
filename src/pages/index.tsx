@@ -1,4 +1,3 @@
-import { trpc } from '@/utils/trpc'
 import type { NextPage } from 'next'
 import GolfCourseForm from '../components/GolfCourseForm'
 
