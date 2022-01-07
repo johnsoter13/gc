@@ -5,7 +5,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "env:encrypt": "bash ./bin/encrypt-env-file.sh",
+    "env:decrypt": "bash ./bin/decrypt-env-file.sh"
   },
   "dependencies": {
     "@prisma/client": "^3.7.0",
@@ -13,6 +15,7 @@
     "@trpc/next": "^9.16.0",
     "@trpc/react": "^9.16.0",
     "@trpc/server": "^9.16.0",
+    "dotenvenc": "^3.0.1",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
