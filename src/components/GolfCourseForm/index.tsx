@@ -1,13 +1,13 @@
-import { IFormInput } from "@/types";
+import { IGolfCourse } from "@/types";
 import { trpc } from "@/utils/trpc";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const GolfCourseForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
+  const { register, handleSubmit, formState: { errors } } = useForm<IGolfCourse>();
   const addNewGC = trpc.useMutation(["add-new-gc"]);
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) =>  {
+  const onSubmit: SubmitHandler<IGolfCourse> = (data) =>  {
     addNewGC.mutate(data);
   };
 

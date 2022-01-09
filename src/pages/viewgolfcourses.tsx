@@ -1,14 +1,15 @@
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetServerSideProps } from 'next';
 
 import GolfCourseNav from '@/components/GolfCourseNav';
 import ViewGolfCoursesList from '@/components/ViewGolfCoursesList';
 import {prisma} from '@/backend/utils/prisma';
+import { GolfCoursProps } from '@/types';
 
-const ViewGolfCourses: NextPage = ({golfCourses}) => {
+const ViewGolfCourses = (props: GolfCoursProps) => {
   return (
     <div className="h-screen w-screen flex flex-col">
       <GolfCourseNav />
-      <ViewGolfCoursesList golfCourses={golfCourses} />
+      <ViewGolfCoursesList golfCourses={props?.golfCourses} />
     </div>
   )
 }
