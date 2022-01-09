@@ -1,38 +1,14 @@
+import { IFormInput } from "@/types";
 import { trpc } from "@/utils/trpc";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-
-interface IFormInput {
-  golfCourseName: string;
-  golfCourseRating: number; // decimal
-  golfCourseSlope: number; // decimal
-  golfCourseYards: number;
-  golfCourseParScore: number;
-  golfCourseHandicap: number; // decimal
-}
 
 const GolfCourseForm = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
   const addNewGC = trpc.useMutation(["add-new-gc"]);
 
   const onSubmit: SubmitHandler<IFormInput> = (data) =>  {
-    const formattedGCRating = parseInt(Number(data.golfCourseRating).toFixed(2));
-    const formattedGCSlope = parseInt(Number(data.golfCourseSlope).toFixed(2));
-    const formattedGCYards = Number(data.golfCourseRating);
-    const formattedGCParScore = Number(data.golfCourseRating);
-    const formattedGCHandicap = parseInt(Number(data.golfCourseHandicap).toFixed(2));
-    const formattedData = {
-      golfCourseName: data.golfCourseName,
-      golfCourseRating: formattedGCRating,
-      golfCourseSlope: formattedGCSlope,
-      golfCourseYards: formattedGCYards,
-      golfCourseParScore: formattedGCParScore,
-      golfCourseHandicap: formattedGCHandicap,
-    };
-
-    addNewGC.mutate(formattedData);
-    
-    console.log(formattedData);
+    addNewGC.mutate(data);
   };
 
   return (
