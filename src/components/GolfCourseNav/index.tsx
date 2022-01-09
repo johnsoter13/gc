@@ -9,7 +9,6 @@ const GolfCourseNav = () => {
     <Nav
       className="flex flex-row justify-end border-b-2"
       defaultActiveKey={ADD_GOLE_COURSE}
-      onSelect={(selectedKey) => alert(`selected ${selectedKey}`)}
       variant="pills"
     >
     <Nav.Item className="p-4 hover:bg-violet-400">

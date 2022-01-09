@@ -1,11 +1,11 @@
 import { IFormInput } from "@/types";
 
 export const sanitizeGCInput = (gc: IFormInput) => {
-  const formattedGCRating = parseInt(Number(gc.golfCourseRating).toFixed(2));
-  const formattedGCSlope = parseInt(Number(gc.golfCourseSlope).toFixed(2));
-  const formattedGCYards = Number(gc.golfCourseRating);
-  const formattedGCParScore = Number(gc.golfCourseRating);
-  const formattedGCHandicap = parseInt(Number(gc.golfCourseHandicap).toFixed(2));
+  const formattedGCRating = gc.golfCourseRating;
+  const formattedGCSlope = gc.golfCourseSlope;
+  const formattedGCYards = gc.golfCourseRating;
+  const formattedGCParScore = gc.golfCourseRating;
+  const formattedGCHandicap = gc.golfCourseHandicap;
 
   return {
     golfCourseName: gc.golfCourseName,
