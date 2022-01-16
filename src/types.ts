@@ -7,6 +7,14 @@ export interface IGolfCourse {
   golfCourseHandicap: string; // decimal
 }
 
-export interface GolfCoursProps {
+export interface GolfCourseProps {
   golfCourses: Array<IGolfCourse>
+}
+
+export interface IGolfer {
+  golferName: string;
+}
+
+export interface GolferProps {
+  golfers: Array<IGolfer>;
 }

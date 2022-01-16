@@ -3,9 +3,9 @@ import type { GetServerSideProps } from 'next';
 import GolfCourseNav from '@/components/GolfCourseNav';
 import ViewGolfCoursesList from '@/components/ViewGolfCoursesList';
 import {prisma} from '@/backend/utils/prisma';
-import { GolfCoursProps } from '@/types';
+import { GolfCourseProps } from '@/types';
 
-const ViewGolfCourses = (props: GolfCoursProps) => {
+const ViewGolfCourses = (props: GolfCourseProps) => {
   return (
     <div className="h-screen w-screen flex flex-col">
       <GolfCourseNav />

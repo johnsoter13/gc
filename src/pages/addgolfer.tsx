@@ -2,13 +2,13 @@ import type { NextPage } from 'next'
 import * as React from 'react';
 
 import GolfCourseNav from '@/components/GolfCourseNav'
-import GolfCourseForm from '@/components/GolfCourseForm'
+import GolferForm from '@/components/GolferForm';
 
 const AddGolfCourse: NextPage = () => {
   return (
     <div className="h-screen w-screen flex flex-col">
       <GolfCourseNav />
-      <GolfCourseForm />
+      <GolferForm />
     </div>
   )
 }

@@ -26,6 +26,23 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
       success: true,
     };
   },
+}).mutation('add-golfer', {
+  input: z
+    .object({
+      golferName: z.string(),
+    }),
+  async resolve({ input }) {
+    const golfer = await prisma.golfer.create({
+      data: {
+        ...input
+      }
+    })
+
+    return {
+      golfer,
+      success: true,
+    }
+  }
 });
 
 // export type definition of API
