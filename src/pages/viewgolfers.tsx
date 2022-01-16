@@ -4,33 +4,25 @@ import { PrismaClient } from '.prisma/client';
 import GolfCourseNav from '@/components/GolfCourseNav';
 import { GolferProps } from '@/types';
 import ViewGolfersList from '@/components/ViewGolfersList';
+import { trpc } from '@/utils/trpc';
 
-const ViewGolfers = (props: GolferProps) => {
+const ViewGolfers = () => {
+  const {
+    data,
+    refetch,
+    isLoading,
+  } = trpc.useQuery(["get-golfers"], {
+    refetchInterval: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
+  });
+
   return (
     <div className="h-screen w-screen flex flex-col">
       <GolfCourseNav />
-      <ViewGolfersList golfers={props?.golfers} />
+      {!isLoading && data && <ViewGolfersList golfers={data.golfers} />}
     </div>
   )
-}
-
-export const getStaticProps: GetServerSideProps = async () => {
-  const prisma = new PrismaClient();
-  const golfers = await prisma.golfer.findMany({
-    select: {
-      golferId: true,
-      golferName: true,
-    }
-  });
-
-  if (!golfers) {
-    return {
-      notFound: true,
-    }
-  }
-  return {
-    props: { golfers }, revalidate: 1 // will be passed to the page component as props
-  };
 }
 
 export default ViewGolfers;

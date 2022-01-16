@@ -61,6 +61,47 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
       success: true,
     }
   }
+}).query("get-golf-courses", {
+  async resolve() {
+    const golfCourses = await prisma.golfCourse.findMany({
+      select: {
+        golfCourseId: true,
+        golfCourseName: true,
+        golfCourseRating: true,
+        golfCourseSlope: true,
+        golfCourseYards: true,
+        golfCourseParScore: true,
+        golfCourseHandicap: true,
+      }
+    });
+
+    return { golfCourses };
+  },
+}).query("get-golfers", {
+  async resolve() {
+    const golfers = await prisma.golfer.findMany({
+      select: {
+        golferId: true,
+        golferName: true,
+      }
+    });
+
+    return { golfers };
+  },
+}).query("get-golf-rounds", {
+  async resolve() {
+    const golfRounds = await prisma.golfRound.findMany({
+      select: {
+        score: true,
+        createdAt: true,
+        golferId: true,
+        golfCourseId: true,
+        golfRoundId: true,
+      }
+    });
+
+    return { golfRounds };
+  },
 });
 
 // export type definition of API

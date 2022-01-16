@@ -14,7 +14,7 @@ export interface IGolfer {
 
 export interface IGolfRound {
   golfRoundId: string;
-  createdAt: string;
+  createdAt: string | Date;
   golferId: string;
   golfCourseId: string;
   score: string;
