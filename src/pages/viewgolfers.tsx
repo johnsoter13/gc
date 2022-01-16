@@ -17,6 +17,7 @@ const ViewGolfers = (props: GolferProps) => {
 export const getStaticProps: GetServerSideProps = async () => {
   const golfers = await prisma.golfer.findMany({
     select: {
+      golferId: true,
       golferName: true,
     }
   });

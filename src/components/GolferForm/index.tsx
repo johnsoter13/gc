@@ -2,13 +2,13 @@ import { trpc } from "@/utils/trpc";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { IGolfer } from "@/types";
+import { GolferInput } from "@/types";
 
 const GolferForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm<IGolfer>();
+  const { register, handleSubmit, formState: { errors } } = useForm<GolferInput>();
   const addNewGolfer = trpc.useMutation(["add-golfer"]);
 
-  const onSubmit: SubmitHandler<IGolfer> = (data) =>  {
+  const onSubmit: SubmitHandler<GolferInput> = (data) =>  {
     addNewGolfer.mutate(data);
   };
 

@@ -16,12 +16,12 @@ const ViewGolfCoursesList = (props: GolfCourseProps) => {
         <Table sx={{ minWidth: 650 }} size="small" aria-label="golf course table">
           <TableHead>
             <TableRow>
-              <TableCell>Course Name</TableCell>
-              <TableCell align="right">Rating</TableCell>
-              <TableCell align="right">Slope</TableCell>
-              <TableCell align="right">Yards</TableCell>
-              <TableCell align="right">Par Score</TableCell>
-              <TableCell align="right">Handicap</TableCell>
+              <TableCell align="left">Course Name</TableCell>
+              <TableCell align="left">Rating</TableCell>
+              <TableCell align="left">Slope</TableCell>
+              <TableCell align="left">Yards</TableCell>
+              <TableCell align="left">Par Score</TableCell>
+              <TableCell align="left">Handicap</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -33,11 +33,11 @@ const ViewGolfCoursesList = (props: GolfCourseProps) => {
                 <TableCell component="th" scope="row">
                   {gc.golfCourseName}
                 </TableCell>
-                <TableCell align="right">{gc.golfCourseRating}</TableCell>
-                <TableCell align="right">{gc.golfCourseSlope}</TableCell>
-                <TableCell align="right">{gc.golfCourseYards}</TableCell>
-                <TableCell align="right">{gc.golfCourseParScore}</TableCell>
-                <TableCell align="right">{gc.golfCourseHandicap}</TableCell>
+                <TableCell align="left">{gc.golfCourseRating}</TableCell>
+                <TableCell align="left">{gc.golfCourseSlope}</TableCell>
+                <TableCell align="left">{gc.golfCourseYards}</TableCell>
+                <TableCell align="left">{gc.golfCourseParScore}</TableCell>
+                <TableCell align="left">{gc.golfCourseHandicap}</TableCell>
               </TableRow>
             ))}
           </TableBody>

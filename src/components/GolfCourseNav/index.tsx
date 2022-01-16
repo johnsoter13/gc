@@ -12,8 +12,10 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
-import { ADD_GOLF_COURSE, VIEW_GOLF_COURSES, ADD_GOLFER, VIEW_GOLFERS} from '@/constants';
+import {ADD_GOLF_COURSE, VIEW_GOLF_COURSES, ADD_GOLFER, VIEW_GOLFERS, ADD_GOLF_ROUND, VIEW_GOLF_ROUNDS} from '@/constants';
 
 const GolfCourseNav = () => {
   const [open, setOpen] = React.useState(false);
@@ -62,17 +64,19 @@ const GolfCourseNav = () => {
           </Typography>
           <Stack direction="row" spacing={2}>
             <div>
-              <Button
-                className="text-white"
+              <IconButton
                 ref={anchorRef}
-                id="composition-button"
+                size="large"
+                edge="start"
+                color="inherit"
                 aria-controls={open ? 'composition-menu' : undefined}
                 aria-expanded={open ? 'true' : undefined}
                 aria-haspopup="true"
+                sx={{ mr: 2 }}
                 onClick={handleToggle}
               >
-                Menu
-              </Button>
+                <MenuIcon />
+              </IconButton>
               <Popper
                 open={open}
                 anchorEl={anchorRef.current}
@@ -101,6 +105,8 @@ const GolfCourseNav = () => {
                           <MenuItem onClick={handleClose}><Link href={VIEW_GOLF_COURSES}><a>View Golf Courses</a></Link></MenuItem>
                           <MenuItem onClick={handleClose}><Link href={ADD_GOLFER}><a>Add Golfer</a></Link></MenuItem>
                           <MenuItem onClick={handleClose}><Link href={VIEW_GOLFERS}><a>View Golfers</a></Link></MenuItem>
+                          <MenuItem onClick={handleClose}><Link href={ADD_GOLF_ROUND}><a>Add Golf Round</a></Link></MenuItem>
+                          <MenuItem onClick={handleClose}><Link href={VIEW_GOLF_ROUNDS}><a>View Golf Rounds</a></Link></MenuItem>
                         </MenuList>
                       </ClickAwayListener>
                     </Paper>

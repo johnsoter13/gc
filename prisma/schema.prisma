@@ -1,11 +1,13 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider          = "mysql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_URL")
+  referentialIntegrity = "prisma"
 }
 
 model GolfCourse {
@@ -16,9 +18,27 @@ model GolfCourse {
   golfCourseRating   String
   golfCourseSlope    String
   golfCourseYards    String
+
+  golfCourse GolfRound[] @relation("golfCourseId")
 }
 
 model Golfer {
   golferId   String @id @default(cuid())
   golferName String
+
+  golfer GolfRound[] @relation("golferId")
+}
+
+model GolfRound {
+  golfRoundId String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  score       String
+
+  golfer       Golfer     @relation(name: "golferId", fields: [golferId], references: [golferId])
+  golferId     String
+  golfCourse   GolfCourse @relation(name: "golfCourseId", fields: [golfCourseId], references: [golfCourseId])
+  golfCourseId String
+
+  @@index([golferId])
+  @@index([golfCourseId])
 }

@@ -1,6 +1,6 @@
-import { IGolfCourse } from "@/types";
+import { GolfCourseInput } from "@/types";
 
-export const sanitizeGCInput = (gc: IGolfCourse) => {
+export const sanitizeGCInput = (gc: GolfCourseInput) => {
   const formattedGCRating = gc.golfCourseRating;
   const formattedGCSlope = gc.golfCourseSlope;
   const formattedGCYards = gc.golfCourseRating;

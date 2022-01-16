@@ -17,6 +17,7 @@ const ViewGolfCourses = (props: GolfCourseProps) => {
 export const getStaticProps: GetServerSideProps = async () => {
   const golfCourses = await prisma.golfCourse.findMany({
     select: {
+      golfCourseId: true,
       golfCourseName: true,
       golfCourseRating: true,
       golfCourseSlope: true,
