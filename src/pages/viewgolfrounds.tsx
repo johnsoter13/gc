@@ -1,8 +1,8 @@
 import type { GetServerSideProps } from 'next';
-import superjson from 'superjson';
+import { PrismaClient } from '.prisma/client';
 
 import GolfCourseNav from '@/components/GolfCourseNav';
-import {prisma} from '@/backend/utils/prisma';
+import prisma from '@/backend/utils/prisma';
 import { GolfRoundProps } from '@/types';
 import ViewGolfRoundsList from '@/components/ViewGolfRoundsList';
 
@@ -16,6 +16,7 @@ const ViewGolfRounds = (props: GolfRoundProps) => {
 }
 
 export const getStaticProps: GetServerSideProps = async () => {
+  const prisma = new PrismaClient();
   const golfRounds = await prisma.golfRound.findMany({
     select: {
       score: true,

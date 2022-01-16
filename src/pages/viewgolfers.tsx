@@ -1,7 +1,7 @@
-import type { GetServerSideProps } from 'next';
+import { GetServerSideProps } from 'next';
+import { PrismaClient } from '.prisma/client';
 
 import GolfCourseNav from '@/components/GolfCourseNav';
-import {prisma} from '@/backend/utils/prisma';
 import { GolferProps } from '@/types';
 import ViewGolfersList from '@/components/ViewGolfersList';
 
@@ -15,6 +15,7 @@ const ViewGolfers = (props: GolferProps) => {
 }
 
 export const getStaticProps: GetServerSideProps = async () => {
+  const prisma = new PrismaClient();
   const golfers = await prisma.golfer.findMany({
     select: {
       golferId: true,

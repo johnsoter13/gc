@@ -1,5 +1,5 @@
 import * as trpc from '@trpc/server';
-import {prisma} from '@/backend/utils/prisma';
+import prisma from '@/backend/utils/prisma';
 
 import { z } from 'zod';
 import { sanitizeGCInput } from '../utils/sanitize';
@@ -56,8 +56,6 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
         ...input
       }
     })
-    console.log(input)
-
     return {
       golfRound,
       success: true,

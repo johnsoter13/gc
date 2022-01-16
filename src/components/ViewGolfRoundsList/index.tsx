@@ -10,7 +10,6 @@ import Paper from '@mui/material/Paper';
 import { GolfRoundProps } from "@/types";
 
 const ViewGolfRoundsList = (props: GolfRoundProps) => {
-  console.log(props?.golfRounds);
   return (
     <div className="flex justify-center items-center h-full">
       <TableContainer className="flex h-[700px]" component={Paper}>
@@ -26,9 +25,6 @@ const ViewGolfRoundsList = (props: GolfRoundProps) => {
           <TableBody>
             {props?.golfRounds?.map((gr, i) => {
               const date = gr.createdAt.toString()
-
-              console.log(date);
-
               return (
                 <TableRow
                   key={i}
