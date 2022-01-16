@@ -34,7 +34,7 @@ export const getStaticProps: GetServerSideProps = async () => {
   }
 
   return {
-    props: { golfRounds }, // will be passed to the page component as props
+    props: { golfRounds, revalidate: 1 }, // will be passed to the page component as props
   };
 }
 
