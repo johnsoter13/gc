@@ -1,7 +1,7 @@
 import * as trpc from '@trpc/server';
 import prisma from '@/backend/utils/prisma';
 
-import { z } from 'zod';
+import { z, ZodError } from 'zod';
 import { sanitizeGCInput } from '../utils/sanitize';
 
 export const appRouter = trpc.router().mutation('add-new-gc', {
@@ -21,6 +21,7 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
         ...formattedGCInput,
       }
     })
+    
     return {
       gc,
       success: true,
@@ -74,8 +75,8 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
         golfCourseHandicap: true,
       }
     });
-
-    return { golfCourses };
+ 
+    return { success: true, golfCourses };
   },
 }).query("get-golfers", {
   async resolve() {
@@ -86,7 +87,7 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
       }
     });
 
-    return { golfers };
+    return { success: true, golfers };
   },
 }).query("get-golf-rounds", {
   async resolve() {
@@ -100,8 +101,20 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
       }
     });
 
-    return { golfRounds };
+    return { success: true, golfRounds };
   },
+}).formatError(({shape, error}) => {
+  return {
+    ...shape,
+    data: {
+      status: false,
+      ...shape.data,
+      zodError:
+        error.cause instanceof ZodError
+          ? error.cause.flatten()
+          : null,
+    }
+  };
 });
 
 // export type definition of API

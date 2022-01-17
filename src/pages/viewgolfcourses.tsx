@@ -14,10 +14,11 @@ const ViewGolfCourses: NextPage = () => {
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
   });
+
   return (
     <div className="h-screen w-screen flex flex-col">
       <GolfCourseNav />
-      {!isLoading && data && <ViewGolfCoursesList golfCourses={data?.golfCourses} />}
+      {!isLoading && data && <ViewGolfCoursesList status={data?.status} golfCourses={data?.golfCourses} />}
     </div>
   )
 }

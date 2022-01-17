@@ -51,3 +51,10 @@ export interface GolfProps {
 export interface GolfRoundProps {
   golfRounds: Array<IGolfRound>
 }
+
+export enum ALERT_TYPES {
+  'error',
+  'warning',
+  'info',
+  'success'
+}
