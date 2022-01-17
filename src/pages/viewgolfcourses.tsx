@@ -18,7 +18,7 @@ const ViewGolfCourses: NextPage = () => {
   return (
     <div className="h-screen w-screen flex flex-col">
       <GolfCourseNav />
-      {!isLoading && data && <ViewGolfCoursesList status={data?.status} golfCourses={data?.golfCourses} />}
+      {!isLoading && data && <ViewGolfCoursesList golfCourses={data?.golfCourses} />}
     </div>
   )
 }

@@ -73,8 +73,8 @@ const GolfRoundForm = (props: GolfProps) => {
           </FormControl>
         </Box>
         <div className="flex flex-col p-2 m-4 ">
-          <label htmlFor="golfCourseSlope">Score</label>
-          <input id="golfCourseSlope" className="text-black p-2" {...register("score", { min: 1, max: 200 })} />
+          <label htmlFor="golfRoundScore">Score</label>
+          <input id="golfRoundScore" className="text-black p-2" {...register("score", { min: 1, max: 200 })} />
         </div>
         <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 border border-blue-700 rounded" type="submit" />
       </form>
