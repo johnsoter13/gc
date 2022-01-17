@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import GolfCourseNav from '@/components/GolfCourseNav'
 import GolfRoundForm from '@/components/GolfRoundForm';
-import { GolfProps } from '@/types';
 import { trpc } from '@/utils/trpc';
 
 const AddGolfRound = () => {

@@ -1,12 +1,10 @@
-import type { GetServerSideProps } from 'next';
-import { PrismaClient } from '.prisma/client';
+import type { NextPage } from 'next'
 
 import GolfCourseNav from '@/components/GolfCourseNav';
-import { GolfRoundProps } from '@/types';
 import ViewGolfRoundsList from '@/components/ViewGolfRoundsList';
 import { trpc } from '@/utils/trpc';
 
-const ViewGolfRounds = () => {
+const ViewGolfRounds: NextPage = () => {
   const {
     data,
     refetch,
