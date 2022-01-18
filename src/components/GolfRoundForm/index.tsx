@@ -30,8 +30,13 @@ const GolfRoundForm = (props: GolfProps) => {
   const addNewGR = trpc.useMutation(["add-golf-round"]);
 
   const onSubmit: SubmitHandler<GolfRoundInput> = (data) =>  {
+    const fairwaysHitFraction = `${data.fairwaysHit}/${data.fairwaysTotal}`;
+    const greensInRegulationFraction = `${data.greensInRegulation}/18`;
     const finalData = {
-      ...data,
+      score: data.score,
+      putts: data.putts,
+      fairwaysHitFraction,
+      greensInRegulationFraction,
       golferId,
       golfCourseId,
     }
@@ -75,6 +80,22 @@ const GolfRoundForm = (props: GolfProps) => {
         <div className="flex flex-col p-2 m-4 ">
           <label htmlFor="golfRoundScore">Score</label>
           <input id="golfRoundScore" className="text-black p-2" {...register("score", { min: 1, max: 200 })} />
+        </div>
+        <div className="flex flex-col p-2 m-4 ">
+          <label htmlFor="golfRoundScore">Fairways Hit</label>
+          <input id="golfRoundScore" className="text-black p-2" {...register("fairwaysHit", { min: 1, max: 200 })} />
+        </div>
+        <div className="flex flex-col p-2 m-4 ">
+          <label htmlFor="golfRoundScore">Fairways Total</label>
+          <input id="golfRoundScore" className="text-black p-2" {...register("fairwaysTotal", { min: 1, max: 200 })} />
+        </div>
+        <div className="flex flex-col p-2 m-4 ">
+          <label htmlFor="golfRoundScore">Greens in Regulation</label>
+          <input id="golfRoundScore" className="text-black p-2" {...register("greensInRegulation", { min: 1, max: 200 })} />
+        </div>
+        <div className="flex flex-col p-2 m-4 ">
+          <label htmlFor="golfRoundScore">Putts</label>
+          <input id="golfRoundScore" className="text-black p-2" {...register("putts", { min: 1, max: 200 })} />
         </div>
         <input className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 border border-blue-700 rounded" type="submit" />
       </form>

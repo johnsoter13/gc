@@ -6,8 +6,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import moment from 'moment'; 
 
 import { GolfRoundProps } from "@/types";
+import { DEFAULT_TABLE_ALIGNMENT } from "@/constants";
 
 const ViewGolfRoundsList = (props: GolfRoundProps) => {
   return (
@@ -16,10 +18,13 @@ const ViewGolfRoundsList = (props: GolfRoundProps) => {
         <Table sx={{ minWidth: 650 }} size="small" aria-label="golf course table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Golfer</TableCell>
-              <TableCell align="left">Golf Course</TableCell>
-              <TableCell align="left">Score</TableCell>
-              <TableCell align="left">Date</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Golfer</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Golf Course</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Score</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Fairways Hit</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Greens in Regulation</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Putts</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Date</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -31,11 +36,14 @@ const ViewGolfRoundsList = (props: GolfRoundProps) => {
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {gr.golferId}
+                    {gr?.golfer?.golferName}
                   </TableCell>
-                  <TableCell align="left">{gr.golfCourseId}</TableCell>
-                  <TableCell align="left">{gr.score}</TableCell>
-                  <TableCell align="left">{date}</TableCell>
+                  <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gr?.golfCourse?.golfCourseName}</TableCell>
+                  <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gr.score}</TableCell>
+                  <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gr.fairwaysHitFraction}</TableCell>
+                  <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gr.greensInRegulationFraction}</TableCell>
+                  <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gr.putts}</TableCell>
+                  <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{moment(date).format('LL')}</TableCell>
                 </TableRow>
               )
             })}

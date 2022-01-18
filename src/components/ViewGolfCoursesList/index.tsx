@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import { GolfCourseProps } from "@/types";
+import { DEFAULT_TABLE_ALIGNMENT } from "@/constants";
 
 const ViewGolfCoursesList = (props: GolfCourseProps) => {
   return (
@@ -16,12 +17,12 @@ const ViewGolfCoursesList = (props: GolfCourseProps) => {
         <Table sx={{ minWidth: 650 }} size="small" aria-label="golf course table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Course Name</TableCell>
-              <TableCell align="left">Rating</TableCell>
-              <TableCell align="left">Slope</TableCell>
-              <TableCell align="left">Yards</TableCell>
-              <TableCell align="left">Par Score</TableCell>
-              <TableCell align="left">Handicap</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Course Name</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Tee Box</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Rating</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Slope</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Yards</TableCell>
+              <TableCell align={DEFAULT_TABLE_ALIGNMENT}>Par Score</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -33,11 +34,11 @@ const ViewGolfCoursesList = (props: GolfCourseProps) => {
                 <TableCell component="th" scope="row">
                   {gc.golfCourseName}
                 </TableCell>
-                <TableCell align="left">{gc.golfCourseRating}</TableCell>
-                <TableCell align="left">{gc.golfCourseSlope}</TableCell>
-                <TableCell align="left">{gc.golfCourseYards}</TableCell>
-                <TableCell align="left">{gc.golfCourseParScore}</TableCell>
-                <TableCell align="left">{gc.golfCourseHandicap}</TableCell>
+                <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gc.golfCourseTeeBox}</TableCell>
+                <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gc.golfCourseRating}</TableCell>
+                <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gc.golfCourseSlope}</TableCell>
+                <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gc.golfCourseYards}</TableCell>
+                <TableCell align={DEFAULT_TABLE_ALIGNMENT}>{gc.golfCourseParScore}</TableCell>
               </TableRow>
             ))}
           </TableBody>

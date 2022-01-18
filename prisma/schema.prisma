@@ -11,13 +11,13 @@ datasource db {
 }
 
 model GolfCourse {
-  golfCourseHandicap String
   golfCourseId       String @id @default(cuid())
   golfCourseName     String
   golfCourseParScore String
   golfCourseRating   String
   golfCourseSlope    String
   golfCourseYards    String
+  golfCourseTeeBox   String
 
   golfCourse GolfRound[] @relation("golfCourseId")
 }
@@ -30,9 +30,12 @@ model Golfer {
 }
 
 model GolfRound {
-  golfRoundId String   @id @default(cuid())
-  createdAt   DateTime @default(now())
-  score       String
+  golfRoundId                String   @id @default(cuid())
+  createdAt                  DateTime @default(now())
+  score                      String
+  fairwaysHitFraction        String?
+  greensInRegulationFraction String?
+  putts                      String?
 
   golfer       Golfer     @relation(name: "golferId", fields: [golferId], references: [golferId])
   golferId     String

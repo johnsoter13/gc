@@ -5,7 +5,7 @@ export interface IGolfCourse {
   golfCourseSlope: string; // decimal
   golfCourseYards: string;
   golfCourseParScore: string;
-  golfCourseHandicap: string; // decimal
+  golfCourseTeeBox: string;
 }
 export interface IGolfer {
   golferId: string;
@@ -18,6 +18,12 @@ export interface IGolfRound {
   golferId: string;
   golfCourseId: string;
   score: string;
+  golfCourse: IGolfCourse;
+  golfer: IGolfer;
+  greensInRegulationFraction: string;
+  fairwaysHitFraction: string;
+  putts: string;
+
 }
 
 export interface GolfCourseInput {
@@ -26,7 +32,7 @@ export interface GolfCourseInput {
   golfCourseSlope: string; // decimal
   golfCourseYards: string;
   golfCourseParScore: string;
-  golfCourseHandicap: string; // decimal
+  golfCourseTeeBox: string;
 }
 export interface GolferInput {
   golferName: string;
@@ -35,6 +41,10 @@ export interface GolfRoundInput {
   golfCourseId: string;
   golferId: string;
   score: string;
+  fairwaysHit: string;
+  fairwaysTotal: string;
+  greensInRegulation: string;
+  putts: string;
 }
 
 export interface GolfCourseProps {

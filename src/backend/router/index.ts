@@ -2,7 +2,6 @@ import * as trpc from '@trpc/server';
 import prisma from '@/backend/utils/prisma';
 
 import { z, ZodError } from 'zod';
-import { sanitizeGCInput } from '../utils/sanitize';
 
 export const appRouter = trpc.router().mutation('add-new-gc', {
   input: z
@@ -12,13 +11,12 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
       golfCourseSlope: z.string(),
       golfCourseYards: z.string(),
       golfCourseParScore: z.string(),
-      golfCourseHandicap: z.string()
+      golfCourseTeeBox: z.string(),
     }),
   async resolve({ input }) {
-    const formattedGCInput = sanitizeGCInput(input);
     const gc = await prisma.golfCourse.create({
       data: {
-        ...formattedGCInput,
+        ...input,
       }
     })
     
@@ -50,6 +48,9 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
       golferId: z.string(),
       golfCourseId: z.string(),
       score: z.string(),
+      fairwaysHitFraction: z.string(),
+      greensInRegulationFraction: z.string(),
+      putts: z.string()
     }),
   async resolve({ input }) {
     const golfRound = await prisma.golfRound.create({
@@ -72,7 +73,7 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
         golfCourseSlope: true,
         golfCourseYards: true,
         golfCourseParScore: true,
-        golfCourseHandicap: true,
+        golfCourseTeeBox: true,
       }
     });
  
@@ -84,7 +85,7 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
       select: {
         golferId: true,
         golferName: true,
-      }
+      },
     });
 
     return { success: true, golfers };
@@ -92,13 +93,20 @@ export const appRouter = trpc.router().mutation('add-new-gc', {
 }).query("get-golf-rounds", {
   async resolve() {
     const golfRounds = await prisma.golfRound.findMany({
-      select: {
-        score: true,
-        createdAt: true,
-        golferId: true,
-        golfCourseId: true,
-        golfRoundId: true,
-      }
+      include: {
+        // score: true,
+        // createdAt: true,
+        // golferId: true,
+        // golfCourseId: true,
+        // golfRoundId: true,
+        golfer: true,
+        golfCourse: true,
+      },
+      orderBy: [
+        {
+          createdAt: 'desc',
+        },
+      ],
     });
 
     return { success: true, golfRounds };
