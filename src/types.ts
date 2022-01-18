@@ -20,9 +20,9 @@ export interface IGolfRound {
   score: string;
   golfCourse: IGolfCourse;
   golfer: IGolfer;
-  greensInRegulationFraction: string;
-  fairwaysHitFraction: string;
-  putts: string;
+  greensInRegulationFraction: string | null;
+  fairwaysHitFraction: string | null;
+  putts: string | null;
 
 }
 
