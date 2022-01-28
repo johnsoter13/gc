@@ -28,8 +28,8 @@ const GolfCourseForm = () => {
           <input id="golfCourseName" className="text-black p-2" {...register("golfCourseName", { required: true, maxLength: 20 })} />
         </div>
         <div className="flex flex-col p-2 m-4 ">
-          <label htmlFor="golfCourseHandicap">Golf Course Tee Box</label>
-          <input id="golfCourseHandicap" className="text-black p-2" {...register("golfCourseTeeBox", { min: 1, max: 100 })} />
+          <label htmlFor="golfCourseTeeBox">Golf Course Tee Box</label>
+          <input id="golfCourseTeeBox" className="text-black p-2" {...register("golfCourseTeeBox", { min: 1, max: 100 })} />
         </div>
         <div className="flex flex-col p-2 m-4 ">
           <label htmlFor="golfCourseRating">Golf Course Rating</label>
